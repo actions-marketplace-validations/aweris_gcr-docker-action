@@ -11,5 +11,6 @@ RUN apk add --no-cache python                     \
 # Add cloud sdk to PATH
 ENV PATH $PATH:/root/google-cloud-sdk/bin
 
-# Configure docker authentication helper
-RUN gcloud auth configure-docker -q
+COPY entrypoint.sh /github-actions-entrypoint.sh
+
+ENTRYPOINT ["/github-actions-entrypoint.sh"]
